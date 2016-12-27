@@ -3,4 +3,17 @@
     <string name="labelVote">Vote</string>
     <string name="errorServerMessage">Can not load data from server</string>
     <string name="aaaaa">aaaaa</string>
+    <string name="label_vote">Bình chọn</string>
+    <string name="label_thongtin">Thông tin</string>
+    <string name="label_dstietmuc">Danh sách tiết mục</string>
+    <string name="label_aboutapp">Thông tin ứng dụng </string>
+    <string name="label_aboutNameApp">Tên ứng dụng:</string>
+    <string name="label_aboutPhienBanApp">Phiên bản phần mềm:</string>
+    <string name="label_LapTrinh">Nhóm lập trình:</string>
+
+
+    <string name="message_success">Bình chọn thành công</string>
+    <string name="message_exited">Bạn đã bình chọn cho tiết mục này</string>
+    <string name="message_out_of_range">Số lượt bình chọn của bạn đã hết</string>
+    <string name="message_failed_update">Bình chọn thất bại. Xin thử lại</string>
 </resources>

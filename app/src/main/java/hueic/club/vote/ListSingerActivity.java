@@ -4,20 +4,26 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import hueic.club.vote.adapter.SingerAdapter;
+import hueic.club.vote.entities.JSonObject;
 import hueic.club.vote.entities.Singer;
 import hueic.club.vote.util.Config;
 import okhttp3.OkHttpClient;
@@ -29,6 +35,7 @@ public class ListSingerActivity extends AppCompatActivity {
     private SingerAdapter mAdapter;
     private List<Singer> singerList;
     private ProgressBar progressBar;
+    private volatile boolean isStop = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,13 +54,61 @@ public class ListSingerActivity extends AppCompatActivity {
             }
         });
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        new LoadFromService().execute();
+        ((ImageView)findViewById(R.id.btnBack)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        //new LoadFromService().execute();
+        realTimeRequest();
     }
+    private void realTimeRequest(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(isStop == false){
+                    new LoadFromService().execute();
+                    Log.e("New Thread","Create");
+                    try{
+                        Thread.sleep(Config.TIME_RELOAD);
+                    }catch (Exception ex){
+
+                    }
+                }
+            }
+        }).start();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        isStop = true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        isStop = true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isStop = false;
+        realTimeRequest();
+    }
+
     private class LoadFromService extends AsyncTask<Void,Void,List<Singer>>{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressBar.setVisibility(View.VISIBLE);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    progressBar.setVisibility(View.VISIBLE);
+                }
+            });
         }
         @Override
         protected List<Singer> doInBackground(Void... voids) {
@@ -70,9 +125,10 @@ public class ListSingerActivity extends AppCompatActivity {
                         .build();
                 Response response = client.newCall(request).execute();
                 String json = response.body().string();
-                Gson gson = new Gson();
-                list = gson.fromJson(json, new TypeToken<List<Singer>>(){}.getType());
-            }catch (IOException ex){
+                Gson gson = new GsonBuilder().create();
+                JSonObject jsonObject = gson.fromJson(json,JSonObject.class);
+                list = jsonObject.result;
+            }catch (Exception ex){
             }
             return list;
         }
@@ -80,15 +136,21 @@ public class ListSingerActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<Singer> singers) {
             super.onPostExecute(singers);
+            singerList = singers;
             if(singers==null) {
                 Toast.makeText(ListSingerActivity.this,getResources().getString(R.string.errorServerMessage),Toast.LENGTH_SHORT).show();
                 return;
             }else {
-                mAdapter = new SingerAdapter(ListSingerActivity.this, R.layout.row_singer, singers);
+                mAdapter = new SingerAdapter(ListSingerActivity.this, R.layout.row_singer, singerList);
                 gridview.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
             }
-            progressBar.setVisibility(View.GONE);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    progressBar.setVisibility(View.GONE);
+                }
+            });
         }
 
     }

@@ -11,11 +11,10 @@ import java.util.Date;
 
 public class Singer implements Serializable {
     public int id;
-    public String soBaoDanh;
+    public String sobaodanh;
     public String anh;
-    public String tenTietMuc;
-    public String tenDonVi;
-    public String hoanThanh;
-    public int soVote;
-    public String trangThai;
+    public String tentietmuc;
+    public String tendonvi;
+    public int sovote;
+    public int trangthai;
 }
