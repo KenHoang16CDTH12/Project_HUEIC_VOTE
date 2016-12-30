@@ -84,7 +84,8 @@ public class SingerAdapter extends ArrayAdapter<Singer> {
                 break;
 
         }
-        Picasso.with(context).load("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTer2m0HKlcJrrp8hTV7SkzVsdgi1rLb2Z3DUT-VATcAdR0ZLMS").into(holder.imgTietMuc);
+        if(singer.anh.length() > 0)
+            Picasso.with(context).load(singer.anh).into(holder.imgTietMuc);
         holder.tvSoBaoDanh.setText("SBD:"+singer.sobaodanh);
         holder.tvVote.setText(String.valueOf(singer.sovote));
         return convertView;

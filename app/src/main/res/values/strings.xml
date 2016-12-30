@@ -16,4 +16,11 @@
     <string name="message_exited">Bạn đã bình chọn cho tiết mục này</string>
     <string name="message_out_of_range">Số lượt bình chọn của bạn đã hết</string>
     <string name="message_failed_update">Bình chọn thất bại. Xin thử lại</string>
+    <string name="message_chuadien">Chỉ được bình chọn cho tiết mục diễn xong.</string>
+
+    <string name="label_dangdien">Đang diễn</string>
+    <string name="label_chuan_bi_dien">Chuẩn bị</string>
+    <string name="label_dadien">Đã diễn</string>
+    <string name="label_chuadien">Chưa diễn</string>
+
 </resources>

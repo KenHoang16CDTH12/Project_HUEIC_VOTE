@@ -14,7 +14,7 @@ public class Singer implements Serializable {
     public String sobaodanh;
     public String anh;
     public String tentietmuc;
-    public String tendonvi;
+    public String donvi;
     public int sovote;
     public int trangthai;
 }

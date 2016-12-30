@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -50,19 +51,27 @@ public class SingerActivity extends AppCompatActivity {
         Animation rotation = AnimationUtils.loadAnimation(this, R.anim.rotate);
         rotation.setFillAfter(true);
         imgTietMuc.startAnimation(rotation);
+        if(singer.anh.length() > 0)
+            Picasso.with(this).load(singer.anh).into(imgTietMuc);
 
         TextView tvTenTietMuc= (TextView) findViewById(R.id.tvTenTietMuc);
         TextView tvVote= (TextView) findViewById(R.id.tvVote);
+        TextView tvTenDonVi = (TextView) findViewById(R.id.tvTenDonVi);
         tvTenTietMuc.setText(singer.tentietmuc);
         tvVote.setText(String.valueOf(singer.sovote));
+        tvTenDonVi.setText(String.valueOf(singer.donvi));
 
         btnVote  = (Button) findViewById(R.id.btnVote);
 
         btnVote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnVote.setVisibility(View.INVISIBLE);
-                new PostToServer().execute();
+                if(singer.trangthai == Config.STATUS_DADIEN){
+                    btnVote.setVisibility(View.INVISIBLE);
+                    new PostToServer().execute();
+                }else{
+                    Toast.makeText(SingerActivity.this,getString(R.string.message_exited),Toast.LENGTH_LONG).show();
+                }
             }
         });
         ((ImageView)findViewById(R.id.btnBack)).setOnClickListener(new View.OnClickListener() {
@@ -82,17 +91,12 @@ public class SingerActivity extends AppCompatActivity {
         protected JsonVote doInBackground(Void... voids) {
             JsonVote jsonVote = null;
             OkHttpClient client = new OkHttpClient.Builder()
-                    .connectTimeout(30, TimeUnit.SECONDS)
-                    .writeTimeout(30, TimeUnit.SECONDS)
-                    .readTimeout(30, TimeUnit.SECONDS)
-                    .build();
-            RequestBody formBody = new FormBody.Builder()
-                    .add(Config.PARAM_ID_SINGER,String.valueOf(singer.id))
-                    .add(Config.PARAM_IMEI,getIMEI())
+                    .connectTimeout(10, TimeUnit.SECONDS)
+                    .writeTimeout(10, TimeUnit.SECONDS)
+                    .readTimeout(10, TimeUnit.SECONDS)
                     .build();
             Request request = new Request.Builder()
-                    .url(Config.URL_VOTE)
-                    .put(formBody)
+                    .url(Config.URL_VOTE + "/?singerid=" + singer.id + "&imei=" + getIMEI() )
                     .build();
 
             try {
@@ -129,6 +133,7 @@ public class SingerActivity extends AppCompatActivity {
 
                 case Config.M_SUCCESS:
                     Toast.makeText(SingerActivity.this,getString(R.string.message_success),Toast.LENGTH_LONG).show();
+                    onBackPressed();
                     break;
 
             }
