@@ -72,18 +72,20 @@
         android:textSize="16sp"
         android:text="Ten Don Vi"
         android:gravity="center_horizontal"/>
+
     <TextView
         android:id="@+id/tvVote"
         android:layout_below="@+id/tvTenDonVi"
-        android:layout_width="match_parent"
-        android:gravity="center_horizontal"
-        android:textSize="60sp"
+        android:layout_height="120dp"
+        android:layout_width="130dp"
+        android:gravity="center"
+        android:textSize="50sp"
         android:textStyle="bold"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:text="100"
-        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
-        android:background="@drawable/bd_dadien"/>
+        android:background="@mipmap/heartred"/>
     <Button
         android:id="@+id/btnVote"
         android:text="@string/label_vote"

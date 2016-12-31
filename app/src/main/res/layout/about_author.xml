@@ -64,17 +64,133 @@
             android:layout_marginBottom="5dp"/>
         <TextView
             android:id="@+id/tvPBApp"
-            android:layout_width="280dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvTenUngDung"
-            android:gravity="right"
-            android:text="app_version"
+            android:layout_marginLeft="180dp"
+            android:text="app_version_1.0"
             android:textColor="#000000"
             android:textSize="18sp" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/tvPhienBan"
-            android:src="@mipmap/icon_vote"/>
+    <TextView
+        android:id="@+id/tvNhomPhatTrien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nhóm phát triển :"
+        android:layout_below="@+id/tvPhienBan"
+        android:textSize="18sp"
+        android:layout_marginBottom="3dp"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgTTB"
+        android:src="@mipmap/ic_avatar"
+        android:layout_below="@+id/tvNhomPhatTrien"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_gravity="left"
+        android:layout_marginBottom="8dp"
+        app:civ_border_width="6dp"
+        app:civ_border_color="@color/color1"/>
+    <TextView
+        android:id="@+id/tvTTB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvNhomPhatTrien"
+        android:text="Trần Thanh Bình "
+        android:layout_toRightOf="@+id/imgTTB"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/tvLeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTTB"
+        android:layout_toRightOf="@+id/imgTTB"
+        android:text="Leader"
+        android:layout_marginTop="10dp"
+        android:textColor="#757575"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgDMH"
+        android:src="@mipmap/ic_avatar"
+        android:layout_below="@+id/imgTTB"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_gravity="left"
+        android:layout_marginBottom="8dp"
+        app:civ_border_width="6dp"
+        app:civ_border_color="@color/color1"/>
+    <TextView
+        android:id="@+id/tvDMH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgTTB"
+        android:text="Dương Minh Hoàng  "
+        android:layout_toRightOf="@+id/imgDMH"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/tvAndroidDeveloper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDMH"
+        android:layout_toRightOf="@+id/imgDMH"
+        android:text="Android Developer"
+        android:layout_marginTop="10dp"
+        android:textColor="#757575"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgHBV"
+        android:src="@mipmap/ic_avatar"
+        android:layout_below="@+id/imgDMH"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_gravity="left"
+        android:layout_marginBottom="8dp"
+        app:civ_border_width="6dp"
+        app:civ_border_color="@color/color1"/>
+    <TextView
+        android:id="@+id/tvHBV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgDMH"
+        android:text="Hoàng Bảo Vũ  "
+        android:layout_toRightOf="@+id/imgDMH"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/tvFrontEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvHBV"
+        android:layout_toRightOf="@+id/imgHBV"
+        android:text="Front-end Developer"
+        android:layout_marginTop="10dp"
+        android:textColor="#757575"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgTAQ"
+        android:src="@mipmap/ic_avatar"
+        android:layout_below="@+id/imgHBV"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_gravity="left"
+        app:civ_border_width="6dp"
+        app:civ_border_color="@color/color1"/>
+    <TextView
+        android:id="@+id/tvTAQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgHBV"
+        android:text="Trần Anh Quốc   "
+        android:layout_toRightOf="@+id/imgDMH"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/tvBackEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTAQ"
+        android:layout_toRightOf="@+id/imgTAQ"
+        android:text="Back-end Developer/DataBase"
+        android:layout_marginTop="10dp"
+        android:textColor="#757575"/>
+
 
 </RelativeLayout>
+
