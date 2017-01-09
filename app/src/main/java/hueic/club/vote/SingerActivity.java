@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.provider.Settings;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
@@ -51,8 +52,23 @@ public class SingerActivity extends AppCompatActivity {
         Animation rotation = AnimationUtils.loadAnimation(this, R.anim.rotate);
         rotation.setFillAfter(true);
         imgTietMuc.startAnimation(rotation);
+
         if(singer.anh.length() > 0)
             Picasso.with(this).load(singer.anh).into(imgTietMuc);
+        switch(singer.trangthai){
+            case Config.STATUS_DANGDIEN:
+                imgTietMuc.setBorderColor(ContextCompat.getColor(this, R.color.colorDangDien));
+                break;
+            case Config.STATUS_CHUANBIDIEN:
+                imgTietMuc.setBorderColor(ContextCompat.getColor(this, R.color.colorChuanBiDien));
+                break;
+            case Config.STATUS_DADIEN:
+                imgTietMuc.setBorderColor(ContextCompat.getColor(this, R.color.colorDaDien));
+                break;
+            case Config.STATUS_CHUADIEN:
+                imgTietMuc.setBorderColor(ContextCompat.getColor(this, R.color.colorChuaDien));
+                break;
+        }
 
         TextView tvTenTietMuc= (TextView) findViewById(R.id.tvTenTietMuc);
         TextView tvVote= (TextView) findViewById(R.id.tvVote);
@@ -70,7 +86,7 @@ public class SingerActivity extends AppCompatActivity {
                     btnVote.setVisibility(View.INVISIBLE);
                     new PostToServer().execute();
                 }else{
-                    Toast.makeText(SingerActivity.this,getString(R.string.message_exited),Toast.LENGTH_LONG).show();
+                    Toast.makeText(SingerActivity.this,getString(R.string.message_chuadien),Toast.LENGTH_LONG).show();
                 }
             }
         });

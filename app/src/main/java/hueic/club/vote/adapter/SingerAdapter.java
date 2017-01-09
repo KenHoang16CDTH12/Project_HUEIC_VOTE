@@ -9,14 +9,11 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import hueic.club.vote.R;
@@ -66,6 +63,7 @@ public class SingerAdapter extends ArrayAdapter<Singer> {
                 Animation rotation = AnimationUtils.loadAnimation(context, R.anim.scale);
                 rotation.setFillAfter(true);
                 holder.frameMain.startAnimation(rotation);
+
                 break;
 
             case Config.STATUS_CHUANBIDIEN:

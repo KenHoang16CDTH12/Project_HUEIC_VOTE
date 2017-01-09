@@ -38,7 +38,8 @@
             android:layout_alignParentRight="true"
             android:src="@mipmap/ic_menu_black"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            />
     </RelativeLayout>
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgTietMuc"
@@ -49,7 +50,7 @@
         android:layout_gravity="center"
         app:civ_border_width="10dp"
         android:layout_centerHorizontal="true"
-        app:civ_border_color="@color/colorChuaDien"/>
+        app:civ_border_color="#F8BBD0"/>
     <TextView
         android:id="@+id/tvTenTietMuc"
         android:layout_below="@+id/imgTietMuc"
@@ -72,6 +73,7 @@
         android:textSize="16sp"
         android:text="Ten Don Vi"
         android:gravity="center_horizontal"/>
+
 
     <TextView
         android:id="@+id/tvVote"

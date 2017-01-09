@@ -78,7 +78,7 @@
         android:text="Nhóm phát triển :"
         android:layout_below="@+id/tvPhienBan"
         android:textSize="18sp"
-        android:layout_marginBottom="3dp"/>
+        android:layout_marginBottom="3dp" />
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgTTB"
         android:src="@mipmap/ic_avatar"
@@ -88,7 +88,7 @@
         android:layout_gravity="left"
         android:layout_marginBottom="8dp"
         app:civ_border_width="6dp"
-        app:civ_border_color="@color/color1"/>
+        app:civ_border_color="@color/colorDangDien" />
     <TextView
         android:id="@+id/tvTTB"
         android:layout_width="wrap_content"
@@ -144,7 +144,7 @@
         android:layout_gravity="left"
         android:layout_marginBottom="8dp"
         app:civ_border_width="6dp"
-        app:civ_border_color="@color/color1"/>
+        app:civ_border_color="@color/color2"/>
     <TextView
         android:id="@+id/tvHBV"
         android:layout_width="wrap_content"
@@ -171,7 +171,7 @@
         android:layout_height="100dp"
         android:layout_gravity="left"
         app:civ_border_width="6dp"
-        app:civ_border_color="@color/color1"/>
+        app:civ_border_color="@color/color3"/>
     <TextView
         android:id="@+id/tvTAQ"
         android:layout_width="wrap_content"
